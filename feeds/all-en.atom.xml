@@ -17,7 +17,7 @@ them. But they can be shared.&lt;/p&gt;
 &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;str2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;abc&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This diagram illustrates the code above.&lt;/p&gt;
-&lt;img alt="Strings immutability" src="images/2014/3/strings_immutability.png" /&gt;
+&lt;img alt="Strings immutability" src="/images/2014/3/strings_immutability.png" /&gt;
 &lt;p&gt;However please pay attention to this: &lt;em&gt;new String(str_val)&lt;/em&gt; will create a new String object
 in the heap whatever if the same string object exists in the heap.&lt;/p&gt;
 &lt;p&gt;For example:&lt;/p&gt;
@@ -31,7 +31,7 @@ in the heap whatever if the same string object exists in the heap.&lt;/p&gt;
 &lt;span class="n"&gt;String&lt;/span&gt; &lt;span class="n"&gt;b&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;xyz&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This diagram illustrates the code above close.&lt;/p&gt;
-&lt;img alt="Strings construction" src="images/2014/3/strings_construction.png" /&gt;
+&lt;img alt="Strings construction" src="/images/2014/3/strings_construction.png" /&gt;
 &lt;p&gt;We can test if a and b are the same string object. Code as follows:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kd"&gt;public&lt;/span&gt; &lt;span class="kd"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;StringTest&lt;/span&gt; &lt;span class="o"&gt;{&lt;/span&gt;
 
