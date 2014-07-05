@@ -20,149 +20,361 @@
     
                         <li><a href="http://harrisonfeng.github.io/pages/aboutme.html">about me</a></li>
                     <li><a href="http://harrisonfeng.github.io/category/java.html">java</a></li>
+                    <li><a href="http://harrisonfeng.github.io/category/python.html">python</a></li>
                 </ul>
                 </nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://harrisonfeng.github.io/java-linked-list.html">Linked List</a></h1>
+                    <h1 class="entry-title"><a href="http://harrisonfeng.github.io/java-arrays.html">Arrays</a></h1>
 <footer class="post-info">
-        <span>Mon 10 March 2014</span>
-<span>| tags: <a href="http://harrisonfeng.github.io/tag/java.html">java</a><a href="http://harrisonfeng.github.io/tag/algorithms.html">algorithms</a></span>
+        <span>Fri 06 June 2014</span>
+<span>| tags: <a href="http://harrisonfeng.github.io/tag/java.html">java</a></span>
 </footer><!-- /.post-info --><div class="section" id="overview">
 <h2>Overview</h2>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field"><th class="field-name">Definition:</th><td class="field-body"><p class="first">A linked list is a recursive data structure that is either empty(null)
-or a reference to a node having a generic item and a reference to a
-linked list.</p>
-<p class="last"><em>Algorithms, Fourth Edition</em></p>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="implementation">
-<h2>Implementation</h2>
-<p>Here is singly linked list implementation in Java.</p>
-<div class="highlight"><pre><span class="cm">/*</span>
-<span class="cm"> * Version 1</span>
-<span class="cm"> */</span>
-<span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
-    <span class="n">Node</span> <span class="n">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">data</span><span class="o">;</span>
+<p>An array is a container object that holds a fixed number of values of a single
+type. The length of an array is fixed once it is created. Jave has special
+language support for arrays: declarations, initialization, and indexing. As
+arrays are objects, whatever we pass an array to a method or use an array
+variable, we are making a copy of the array reference, not a copy of an array.</p>
+<p>Array entries can be any of type. The declarations and initialization of
+arrays are actually to allocate memory space for arrays and assign initial
+values to each element. Once the initialization is completed, the length of
+the array cannot be changed later. You can access the element of the array
+or put values in the array by numberical index (using <cite>a[i]</cite>, i is the indices
+of the array <cite>a</cite>, starting at <cite>0</cite>). <cite>length</cite> is used to obtain the length of
+the array (<cite>a.length</cite>).</p>
+<div class="section" id="creating-and-initializing">
+<h3>Creating and initializing</h3>
+<p>There are three distinct steps to make an array in Java.</p>
+<ul class="simple">
+<li>Declare the array name and type</li>
+<li>Create the array</li>
+<li>Initialize the array values</li>
+</ul>
+<div class="highlight"><pre><span class="c1">// long form</span>
 
-    <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span>
-    <span class="o">}</span>
-
-    <span class="cm">/**</span>
-<span class="cm">     * Appends the specified element to the end of this list.</span>
-<span class="cm">     *</span>
-<span class="cm">     */</span>
-    <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Node</span> <span class="n">end</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">d</span><span class="o">);</span>
-        <span class="n">Node</span> <span class="n">n</span> <span class="o">=</span> <span class="k">this</span><span class="o">;</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="n">n</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">end</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-<p>Creat and access linked list</p>
-<div class="highlight"><pre><span class="cm">/*</span>
-<span class="cm"> * Create a linked list</span>
-<span class="cm"> * 5 -&gt; 3 -&gt; 8</span>
-<span class="cm"> *</span>
-<span class="cm"> */</span>
-<span class="n">Node</span> <span class="n">head</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>
-<span class="n">head</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">3</span><span class="o">);</span>
-<span class="n">head</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="mi">8</span><span class="o">);</span>
+<span class="kt">double</span><span class="o">[]</span> <span class="n">a</span><span class="o">;</span>                                  <span class="c1">// declaration</span>
+<span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span>                          <span class="c1">// array creation</span>
 
 <span class="cm">/*</span>
-<span class="cm"> * Access node</span>
+<span class="cm"> * if this step isn&#39;t given, java will initialize it.</span>
 <span class="cm"> */</span>
-<span class="n">head</span><span class="o">.</span><span class="na">data</span>             <span class="c1">// Node 5</span>
-<span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">data</span>        <span class="c1">// Node 3</span>
-<span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">data</span>   <span class="c1">// Node 8</span>
+<span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>  <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="mf">0.0</span><span class="o">;</span>     <span class="c1">// value initialization</span>
 </pre></div>
-<p>Simplified</p>
-<div class="highlight"><pre><span class="cm">/*</span>
-<span class="cm"> * Version 2</span>
-<span class="cm"> */</span>
-<span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">data</span><span class="o">;</span>
-    <span class="n">Node</span> <span class="n">next</span><span class="o">;</span>
+<p>Here is an example to create array and access elements of it.</p>
+<div class="highlight"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArrayDemo</span> <span class="o">{</span>
 
-    <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span>
-        <span class="n">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+
+        <span class="c1">// (1) Dynamic initialization with new operator</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">aArr</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span>
+        <span class="n">aArr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="s">&quot;hello&quot;</span><span class="o">;</span>
+        <span class="n">aArr</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="s">&quot;world&quot;</span><span class="o">;</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">aArr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">aArr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+
+        <span class="c1">// (2) Static initializaiton (aggregate initialization)</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">iArr</span> <span class="o">=</span> <span class="o">{</span><span class="mi">101</span><span class="o">,</span> <span class="mi">102</span><span class="o">,</span> <span class="mi">103</span><span class="o">,</span> <span class="mi">104</span><span class="o">};</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">iArr</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iArr</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+
+        <span class="c1">// Get the length of array</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">aArr</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">iArr</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="cm">/* output:</span>
+<span class="cm">    hello</span>
+<span class="cm">    world</span>
+<span class="cm">    null</span>
+<span class="cm">    null</span>
+<span class="cm">    null</span>
+<span class="cm">    null</span>
+<span class="cm">    null</span>
+<span class="cm">    null</span>
+<span class="cm">    null</span>
+<span class="cm">    null</span>
+<span class="cm">    101</span>
+<span class="cm">    102</span>
+<span class="cm">    103</span>
+<span class="cm">    104</span>
+<span class="cm">    10</span>
+<span class="cm">    4</span>
+<span class="cm">*/</span>
+</pre></div>
+<p>From the results above, we can get that for the array without initial values,
+Java will give the initial value <em>null</em>. Actually, Java will give each array
+initial values if we don't do it. Here is the rules:</p>
+<ul class="simple">
+<li>For the array of  <strong>int</strong>, <strong>short</strong>, <strong>long</strong> and <strong>byte</strong> types, the initial values will be <strong>0</strong>.</li>
+<li>For the array of <strong>float</strong> and <strong>double</strong> types, the initial values will be <strong>0.0</strong>.</li>
+<li>For the array of <strong>char</strong> type, the initial values will be <strong>'u0000'</strong>.</li>
+<li>For the array of <strong>boolean</strong> type, the initial values will be <strong>false</strong>.</li>
+<li>For the array of reference type (<strong>class</strong>, <strong>interface</strong> and <strong>array</strong>), the initial values will be <strong>null</strong>.</li>
+</ul>
+</div>
+<div class="section" id="aliasing">
+<h3>Aliasing</h3>
+<p>Note carefully that <cite>an array name refers to the whole array</cite>. If the array
+name is assigned to another, then both refer to the same array.</p>
+<div class="highlight"><pre><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">5</span><span class="o">];</span>
+<span class="n">a</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="mi">100</span><span class="o">;</span>
+<span class="kt">int</span><span class="o">[]</span> <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">;</span>
+<span class="n">b</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="mi">50</span><span class="o">;</span> <span class="c1">// a[2] is now 50.</span>
+</pre></div>
+</div>
+<div class="section" id="how-does-the-array-store-in-memory">
+<h3>How does the Array store in memory?</h3>
+<p>Arrays are first-class objects. Regardless of what type of array you’re working
+with, the array identifier is actually a reference to a true object that’s
+created on the heap. Let's use a diagram to illustrate this.</p>
+<div class="highlight"><pre><span class="kt">char</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">char</span><span class="o">[</span><span class="mi">3</span><span class="o">];</span>
+<span class="n">a</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;x&#39;</span><span class="o">;</span>
+<span class="n">a</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;y&#39;</span><span class="o">;</span>
+<span class="n">a</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="sc">&#39;z&#39;</span><span class="o">;</span>
+</pre></div>
+<pre class="literal-block">
+  stack                   heap
+
+ +-----+               +------+------+------+
+ |  a  |--------------&gt;| a[0] | a[1] | a[2] | // the array object
+ +-----+               +------+------+------+
+                          V      V      V
+                        +---+  +---+  +---+
+                        |'x'|  |'y'|  |'z'|
+                        +---+  +---+  +---+
+
+So a and a[i] are actually reference variables.
+</pre>
+</div>
+<div class="section" id="nested-arrays">
+<h3>Nested Arrays</h3>
+<p>Personally, I don't think multiple-dimensional array is a good name for nested
+arrays. I think nested arrays more reflect the real situation. To create nested
+arrays, you need to add one or more pair of square brackets. Nest once, add a
+pair of square brackets. Nest N times, add N pairs of square brackets.</p>
+<div class="highlight"><pre><span class="n">String</span><span class="o">[][]</span> <span class="n">s</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="mi">2</span><span class="o">][</span><span class="mi">3</span><span class="o">];</span>
+</pre></div>
+<pre class="literal-block">
+                         +-------+
+                         |s[0][0]|
+                         +-------+
+                         |  ...  |
+                         +-------+
+                         |  ...  |
+                         +-------+
+          +-----+            |
++-----+   |s[0] |------------/
+|  s  |--&gt;+-----+
++-----+   |s[1] |------------\
+          +-----+            |
+                         +-------+
+                         |s[1][0]|
+                         +-------+
+                         |  ...  |
+                         +-------+
+                         |  ...  |
+                         +-------+
+
+s[0] and s[1] are the elements of the array s, s[0] points a array object
+whose size is 3 we defined in creating the array. The array object is called
+nested array. The same situation exists in s[1].
+</pre>
+<div class="section" id="array-processing-examples">
+<h4>Array Processing Examples</h4>
+<ul class="simple">
+<li>create an array with random values <a class="footnote-reference" href="#id7" id="id1">[1]</a>.</li>
+<li>print the array values, one per line <a class="footnote-reference" href="#id8" id="id2">[2]</a>.</li>
+<li>find the maxiumum of the array values <a class="footnote-reference" href="#id9" id="id3">[3]</a>.</li>
+<li>calculate the average of the array values <a class="footnote-reference" href="#id10" id="id4">[4]</a>.</li>
+<li>copy to another array <a class="footnote-reference" href="#id11" id="id5">[5]</a>.</li>
+<li>reverse the elements within an array <a class="footnote-reference" href="#id12" id="id6">[6]</a>.</li>
+</ul>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td></td></tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span class="kt">double</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">random</span><span class="o">();</span>
+</pre></div>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td></td></tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+</pre></div>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td></td></tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span class="kt">double</span> <span class="n">max</span> <span class="o">=</span> <span class="n">Double</span><span class="o">.</span><span class="na">NEGATIVE_INFINITY</span><span class="o">;</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">max</span><span class="o">)</span> <span class="n">max</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+<span class="o">}</span>
+</pre></div>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td></td></tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span class="kt">double</span> <span class="n">sum</span> <span class="o">=</span> <span class="mf">0.0</span><span class="o">;</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">sum</span> <span class="o">+=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+<span class="o">}</span>
+<span class="kt">double</span> <span class="n">ave</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">/</span> <span class="mi">10</span><span class="o">;</span>
+</pre></div>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td></td></tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span class="kt">double</span><span class="o">[]</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">double</span><span class="o">[</span><span class="mi">10</span><span class="o">];</span>
+<span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="n">b</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+<span class="o">}</span>
+</pre></div>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[6]</a></td><td></td></tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+    <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">];</span>
+    <span class="n">a</span><span class="o">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="arrays-in-depth">
+<h2>Arrays in depth</h2>
+<div class="section" id="methods-for-arrays">
+<h3>Methods for Arrays</h3>
+<p>Arrays have many methods that you can use in Java. Here lists some methods
+frequently used.</p>
+<div class="section" id="print-arrays">
+<h4>1. Print arrays</h4>
+<div class="highlight"><pre><span class="n">String</span><span class="o">[]</span> <span class="n">strArr</span> <span class="o">=</span> <span class="o">{</span><span class="s">&quot;abc&quot;</span><span class="o">,</span> <span class="s">&quot;xyz&quot;</span><span class="o">,</span> <span class="s">&quot;baz&quot;</span><span class="o">};</span>
+<span class="n">String</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">strArr</span><span class="o">);</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Directly print the reference value,</span>
+<span class="cm"> * actually, it&#39;s memory address value.</span>
+<span class="cm"> */</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">strArr</span><span class="o">);</span> <span class="c1">//[Ljava.lang.String;@3d0bbf6d</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s</span><span class="o">);</span> <span class="c1">// [abc, xyz, baz]</span>
+</pre></div>
+</div>
+<div class="section" id="check-if-an-array-contains-a-certain-value">
+<h4>2. Check if an array contains a certain value.</h4>
+<blockquote>
+<ul class="simple">
+<li>use list</li>
+<li>use set</li>
+<li>use a loop</li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><span class="n">String</span><span class="o">[]</span> <span class="n">sArr</span> <span class="o">=</span> <span class="o">{</span><span class="s">&quot;xyz&quot;</span><span class="o">,</span> <span class="s">&quot;bar&quot;</span><span class="o">,</span> <span class="s">&quot;baz&quot;</span><span class="o">,</span> <span class="s">&quot;abc&quot;</span><span class="o">};</span>
+
+<span class="c1">// use list</span>
+<span class="kt">boolean</span> <span class="n">bList</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">sArr</span><span class="o">).</span><span class="na">contains</span><span class="o">(</span><span class="s">&quot;bar&quot;</span><span class="o">);</span>
+<span class="c1">// use set</span>
+<span class="kt">boolean</span> <span class="n">bSet</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashSet</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="n">sArr</span><span class="o">)).</span><span class="na">contains</span><span class="o">(</span><span class="s">&quot;bar&quot;</span><span class="o">);</span>
+
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bList</span><span class="o">);</span>
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">bSet</span><span class="o">);</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Output:</span>
+<span class="cm"> * true</span>
+<span class="cm"> * true</span>
+<span class="cm"> */</span>
+</pre></div>
+<div class="highlight"><pre><span class="c1">// use a loop</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">containsValue</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">sArr</span><span class="o">,</span> <span class="n">String</span> <span class="n">tarStr</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">for</span> <span class="o">(</span><span class="n">String</span> <span class="nl">e:</span> <span class="n">sArr</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">tarStr</span><span class="o">))</span> <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+<div class="section" id="concatenate-two-arrays">
+<h4>3. Concatenate two arrays</h4>
+<div class="highlight"><pre><span class="n">String</span><span class="o">[]</span> <span class="n">sArr1</span> <span class="o">=</span> <span class="o">{</span><span class="s">&quot;bar&quot;</span><span class="o">,</span> <span class="s">&quot;xyz&quot;</span><span class="o">,</span> <span class="s">&quot;baz&quot;</span><span class="o">};</span>
+<span class="n">String</span><span class="o">[]</span> <span class="n">sArr2</span> <span class="o">=</span> <span class="o">{</span><span class="s">&quot;foo&quot;</span><span class="o">,</span> <span class="s">&quot;chr&quot;</span><span class="o">};</span>
+<span class="c1">// apache commons lang org.apache.commons.lang3.ArrayUtils</span>
+<span class="n">String</span><span class="o">[]</span> <span class="n">sArrCon</span> <span class="o">=</span> <span class="n">ArrayUtils</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">sArr1</span><span class="o">,</span> <span class="n">sArr2</span><span class="o">);</span>
+
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">sArrCon</span><span class="o">));</span> <span class="c1">// [bar, xyz, baz, foo, chr]</span>
+</pre></div>
+</div>
+<div class="section" id="reverse-an-array">
+<h4>4. Reverse an array</h4>
+<p>We can use the method ArrayUtils.reverse() from apache commons lang3, but
+how to implement it if we don't have apache commons lang3.</p>
+<div class="highlight"><pre><span class="kt">char</span><span class="o">[]</span> <span class="n">cArr</span> <span class="o">=</span> <span class="o">{</span><span class="sc">&#39;a&#39;</span><span class="o">,</span> <span class="sc">&#39;b&#39;</span><span class="o">,</span> <span class="sc">&#39;c&#39;</span><span class="o">};</span>
+<span class="n">ArrayUtils</span><span class="o">.</span><span class="na">reverse</span><span class="o">(</span><span class="n">cArr</span><span class="o">);</span>
+
+<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">cArr</span><span class="o">));</span>
+</pre></div>
+<p>Here implements a static reverse method for <em>char</em> type Arrays. For other types,
+you can use the same method in which you just replace char type using other
+types.</p>
+<div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">reverse</span><span class="o">(</span><span class="kt">char</span><span class="o">[]</span> <span class="n">array</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">array</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span><span class="o">;</span>
+
+    <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">;</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">/</span><span class="mi">2</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+        <span class="kt">char</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+        <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="o">];</span>
+        <span class="n">array</span><span class="o">[</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
 </div>
-<div class="section" id="operations">
-<h2>Operations</h2>
-<ol class="arabic simple">
-<li>Deleting a Node from a singly linked list</li>
-</ol>
-<div class="highlight"><pre><span class="n">Node</span> <span class="nf">delNode</span><span class="o">(</span><span class="n">Node</span> <span class="n">head</span><span class="o">,</span> <span class="kt">int</span> <span class="n">nd</span><span class="o">)</span> <span class="o">{</span>
-
-    <span class="cm">/*</span>
-<span class="cm">     * If the Node to be deleted is head, just move head.</span>
-<span class="cm">     */</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">head</span><span class="o">.</span><span class="na">data</span> <span class="o">==</span> <span class="n">nd</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">// Move head</span>
-    <span class="o">}</span>
-
-    <span class="n">Node</span> <span class="n">n</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
-
-    <span class="k">while</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">nd</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">n</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
-            <span class="k">return</span> <span class="n">head</span><span class="o">;</span> <span class="c1">// head didn&#39;t changed</span>
-        <span class="o">}</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-<ol class="arabic simple" start="2">
-<li>Deleting duplicated Nodes from an unsorted singly linked list</li>
-</ol>
-<pre class="literal-block">
-a) Use a buffer
-</pre>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">java.util.Hashtable</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">delDupNodes</span><span class="o">(</span><span class="n">LinkedListNode</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
-
-    <span class="n">Hashtable</span> <span class="n">tab</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Hashtable</span><span class="o">();</span>
-    <span class="n">LinkedListNode</span> <span class="n">pre</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">// previous node</span>
-
-    <span class="k">while</span><span class="o">(</span><span class="n">n</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span><span class="o">(</span><span class="n">tab</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">data</span><span class="o">))</span> <span class="o">{</span>
-            <span class="n">pre</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="n">tab</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">data</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
-            <span class="n">pre</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
-        <span class="o">}</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-<pre class="literal-block">
-b) Without a buffer
-</pre>
+</div>
 </div>
                 </article>
             </aside><!-- /#featured -->
                 <section id="content" class="body">
                     <h1>Other articles</h1>
                     <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="http://harrisonfeng.github.io/java-linked-list.html" rel="bookmark"
+                           title="Permalink to Linked List">Linked List</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>Mon 10 March 2014</span>
+<span>| tags: <a href="http://harrisonfeng.github.io/tag/java.html">java</a><a href="http://harrisonfeng.github.io/tag/algorithms.html">algorithms</a></span>
+</footer><!-- /.post-info -->                <p class="first last">This document presents you various technologies about linked list. It may
+contain linked list fundamentals, algorithms, interview questions and some
+code examples.</p>
+
+                <a class="readmore" href="http://harrisonfeng.github.io/java-linked-list.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -190,6 +402,7 @@ b) Without a buffer
                             <li><a href="http://www.jobbole.com/">Jobbole</a></li>
                             <li><a href="http://oj.leetcode.com">OJ Leetcode</a></li>
                             <li><a href="http://www.importnew.com">Import New</a></li>
+                            <li><a href="http://www.36kr.com/">36Kr</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">

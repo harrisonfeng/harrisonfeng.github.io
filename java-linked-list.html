@@ -20,6 +20,7 @@
     
                         <li><a href="http://harrisonfeng.github.io/pages/aboutme.html">about me</a></li>
                     <li class="active"><a href="http://harrisonfeng.github.io/category/java.html">java</a></li>
+                    <li><a href="http://harrisonfeng.github.io/category/python.html">python</a></li>
                 </ul>
                 </nav>
         </header><!-- /#banner -->
@@ -52,29 +53,33 @@ linked list.</p>
 </div>
 <div class="section" id="implementation">
 <h2>Implementation</h2>
-<p>Here is singly linked list implementation in Java.</p>
-<div class="highlight"><pre><span class="cm">/*</span>
-<span class="cm"> * Version 1</span>
+<p>Here is the node implementation of a singly linked list in Java.</p>
+<div class="highlight"><pre><span class="cm">/**</span>
+<span class="cm"> * The node implementation of a singly linked list. You can call</span>
+<span class="cm"> * {@link Node#add} to add new node to the end.</span>
+<span class="cm"> *</span>
 <span class="cm"> */</span>
-<span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
-    <span class="n">Node</span> <span class="n">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-    <span class="kt">int</span> <span class="n">data</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
+    <span class="n">Node</span> <span class="n">mNext</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">mData</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span>
+    <span class="c1">// constructor to create a new node.</span>
+    <span class="n">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+       <span class="n">mData</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="cm">/**</span>
-<span class="cm">     * Appends the specified element to the end of this list.</span>
+<span class="cm">     * Append or add new node to the end of linked list.</span>
 <span class="cm">     *</span>
+<span class="cm">     * @param int the data of the node to be added.</span>
 <span class="cm">     */</span>
-    <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Node</span> <span class="n">end</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">d</span><span class="o">);</span>
+    <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="kt">int</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">Node</span> <span class="n">end</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="o">(</span><span class="n">data</span><span class="o">);</span>
         <span class="n">Node</span> <span class="n">n</span> <span class="o">=</span> <span class="k">this</span><span class="o">;</span>
-        <span class="k">while</span> <span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">mNext</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">mNext</span><span class="o">;</span>
         <span class="o">}</span>
-        <span class="n">n</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">end</span><span class="o">;</span>
+        <span class="n">n</span><span class="o">.</span><span class="na">mNext</span> <span class="o">=</span> <span class="n">end</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
@@ -91,21 +96,21 @@ linked list.</p>
 <span class="cm">/*</span>
 <span class="cm"> * Access node</span>
 <span class="cm"> */</span>
-<span class="n">head</span><span class="o">.</span><span class="na">data</span>             <span class="c1">// Node 5</span>
-<span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">data</span>        <span class="c1">// Node 3</span>
-<span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">data</span>   <span class="c1">// Node 8</span>
+<span class="n">head</span><span class="o">.</span><span class="na">mData</span>              <span class="c1">// Node 5</span>
+<span class="n">head</span><span class="o">.</span><span class="na">mNext</span><span class="o">.</span><span class="na">mData</span>        <span class="c1">// Node 3</span>
+<span class="n">head</span><span class="o">.</span><span class="na">mNext</span><span class="o">.</span><span class="na">mNext</span><span class="o">.</span><span class="na">mData</span>  <span class="c1">// Node 8</span>
 </pre></div>
 <p>Simplified</p>
 <div class="highlight"><pre><span class="cm">/*</span>
-<span class="cm"> * Version 2</span>
+<span class="cm"> * more simplified implementation</span>
 <span class="cm"> */</span>
 <span class="kd">class</span> <span class="nc">Node</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">data</span><span class="o">;</span>
-    <span class="n">Node</span> <span class="n">next</span><span class="o">;</span>
+    <span class="kt">int</span> <span class="n">mData</span><span class="o">;</span>
+    <span class="n">Node</span> <span class="n">mNext</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">d</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">d</span><span class="o">;</span>
-        <span class="n">next</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nf">Node</span><span class="o">(</span><span class="kt">int</span> <span class="n">data</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">mData</span> <span class="o">=</span> <span class="n">data</span><span class="o">;</span>
+        <span class="n">mNext</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
@@ -120,18 +125,18 @@ linked list.</p>
     <span class="cm">/*</span>
 <span class="cm">     * If the Node to be deleted is head, just move head.</span>
 <span class="cm">     */</span>
-    <span class="k">if</span><span class="o">(</span><span class="n">head</span><span class="o">.</span><span class="na">data</span> <span class="o">==</span> <span class="n">nd</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">head</span><span class="o">.</span><span class="na">next</span><span class="o">;</span> <span class="c1">// Move head</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">head</span><span class="o">.</span><span class="na">mData</span> <span class="o">==</span> <span class="n">nd</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">head</span><span class="o">.</span><span class="na">mNext</span><span class="o">;</span> <span class="c1">// Move head</span>
     <span class="o">}</span>
 
     <span class="n">Node</span> <span class="n">n</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
 
-    <span class="k">while</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">next</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">data</span> <span class="o">=</span> <span class="n">nd</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">n</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">next</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+    <span class="k">while</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">mNext</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">mNext</span><span class="o">.</span><span class="na">mData</span> <span class="o">=</span> <span class="n">nd</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">n</span><span class="o">.</span><span class="na">mNext</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">mNext</span><span class="o">.</span><span class="na">mNext</span><span class="o">;</span>
             <span class="k">return</span> <span class="n">head</span><span class="o">;</span> <span class="c1">// head didn&#39;t changed</span>
         <span class="o">}</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">mNext</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
@@ -149,19 +154,20 @@ a) Use a buffer
     <span class="n">LinkedListNode</span> <span class="n">pre</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span> <span class="c1">// previous node</span>
 
     <span class="k">while</span><span class="o">(</span><span class="n">n</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span><span class="o">(</span><span class="n">tab</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">data</span><span class="o">))</span> <span class="o">{</span>
-            <span class="n">pre</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">tab</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">mData</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">pre</span><span class="o">.</span><span class="na">mNext</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">mNext</span><span class="o">;</span>
         <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
-            <span class="n">tab</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">data</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
+            <span class="n">tab</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">n</span><span class="o">.</span><span class="na">mData</span><span class="o">,</span> <span class="kc">true</span><span class="o">);</span>
             <span class="n">pre</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
         <span class="o">}</span>
-        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="na">mNext</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
 <pre class="literal-block">
 b) Without a buffer
 </pre>
+<p>[To be Continued]</p>
 </div>
 
     </div><!-- /.entry-content -->
@@ -177,6 +183,7 @@ b) Without a buffer
                             <li><a href="http://www.jobbole.com/">Jobbole</a></li>
                             <li><a href="http://oj.leetcode.com">OJ Leetcode</a></li>
                             <li><a href="http://www.importnew.com">Import New</a></li>
+                            <li><a href="http://www.36kr.com/">36Kr</a></li>
                         </ul>
                 </div><!-- /.blogroll -->
                 <div class="social">

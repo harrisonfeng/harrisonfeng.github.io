@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Unicode in Python</title>
+        <link rel="stylesheet" href="http://harrisonfeng.github.io/theme/css/main.css" />
+        <link href="http://harrisonfeng.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Harrison Feng Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://harrisonfeng.github.io/">Harrison Feng </a></h1>
+                <nav><ul>
+    
+                        <li><a href="http://harrisonfeng.github.io/pages/aboutblog.html">about blog</a></li>
+    
+                        <li><a href="http://harrisonfeng.github.io/pages/aboutme.html">about me</a></li>
+                    <li><a href="http://harrisonfeng.github.io/category/java.html">java</a></li>
+                    <li class="active"><a href="http://harrisonfeng.github.io/category/python.html">python</a></li>
+                </ul>
+                </nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://harrisonfeng.github.io/unicode-py.html" rel="bookmark"
+           title="Permalink to Unicode in Python">Unicode in Python</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Tue 03 June 2014</span>
+<span>| tags: <a href="http://harrisonfeng.github.io/tag/python.html">python</a><a href="http://harrisonfeng.github.io/tag/unicodes.html">unicodes</a></span>
+</footer><!-- /.post-info -->      <div class="section" id="history-of-character-codes">
+<h2>History of Character Codes</h2>
+<dl class="docutils">
+<dt>ASCII</dt>
+<dd><p class="first">In 1968, ASCII is standardized which defined numeric codes for various
+characters, with the numeric values running from 0 to 127. These characters
+contain the numbers 0-9, the letters a-z and A-Z, some basic punctuation
+symbols, some control codes that originated with Teletype machines, and a blank
+space - into the 7-bit binary integers. For the 8-bit PCs, bytes could hold
+values ranging from 0 to 255, but ASCII only went up to 127. So the ASCII was
+extended to hold more characters (128 ~ 255) (i.e. accented characters).</p>
+<p class="last">But 255 characters isn't still enough to hold various characters in the world
+(i.e. accented characters used in Western Europe and the Cyrillic alphabet
+used for Russian)</p>
+</dd>
+<dt>Unicode</dt>
+<dd>Unicode started out using 16-bit characters instead of 8-bit characters to
+solve the problem above. 16 bits means that you can hold 65,536 distinct
+characters. Unfortunately, It turns out that even 16 bits isn't still
+enough to hold all of characters. So the modern Unicode specification uses
+a wider range of codes, 0-1,114,111 (0x10ffff in base-16).</dd>
+</dl>
+</div>
+<div class="section" id="definitions">
+<h2>Definitions</h2>
+<p>The Unicode standard describles how characters are represented by code points <a class="footnote-reference" href="#id2" id="id1">[1]</a>.
+A Unicode string is a sequence of code points, which are numbers from 0 to 0x10ffff.
+This sequence needs to be represented as a set of bytes(meaning, values from 0-255)
+in memory. So this refers to a concept called <strong>encoding</strong>.</p>
+<dl class="docutils">
+<dt>decoding/encoding</dt>
+<dd>The process of converting the Unicode string (a sequence of code points) to a
+sequence of bytes is encoding, while the reverse process is encoding.</dd>
+</dl>
+<p>UTF-8 is the most commonly supported encoding probably. Encodings don't have to
+handle every possible Unicode character, and most encodings don't. UTF-8 uses
+the following rules:</p>
+<blockquote>
+<p># if the code point is &lt; 128, it's represented by the corresponding byte value.</p>
+<p># if the code point is between 128 and 0x7ff, it’s turned into two byte values between 128 and 255.</p>
+</blockquote>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Code point is an integer value, usually denoted in base 16 which generally
+represents single character. A code point is written using the notation
+U+12ca to mean the character with value 0x12ca (4810 decimal).</td></tr>
+</tbody>
+</table>
+</div>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://www.jobbole.com/">Jobbole</a></li>
+                            <li><a href="http://oj.leetcode.com">OJ Leetcode</a></li>
+                            <li><a href="http://www.importnew.com">Import New</a></li>
+                            <li><a href="http://www.36kr.com/">36Kr</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://harrisonfeng.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="http://cn.linkedin.com/in/harrisonfeng">Linkedin</a></li>
+                            <li><a href="http://github.com/harrisonfeng">Github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

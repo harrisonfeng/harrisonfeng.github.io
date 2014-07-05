@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Python Inside</title>
+        <link rel="stylesheet" href="http://harrisonfeng.github.io/theme/css/main.css" />
+        <link href="http://harrisonfeng.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Harrison Feng Atom Feed" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://harrisonfeng.github.io/">Harrison Feng </a></h1>
+                <nav><ul>
+    
+                        <li><a href="http://harrisonfeng.github.io/pages/aboutblog.html">about blog</a></li>
+    
+                        <li><a href="http://harrisonfeng.github.io/pages/aboutme.html">about me</a></li>
+                    <li><a href="http://harrisonfeng.github.io/category/java.html">java</a></li>
+                    <li class="active"><a href="http://harrisonfeng.github.io/category/python.html">python</a></li>
+                </ul>
+                </nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://harrisonfeng.github.io/python-inside.html" rel="bookmark"
+           title="Permalink to Python Inside">Python Inside</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>Fri 06 June 2014</span>
+<span>| tags: <a href="http://harrisonfeng.github.io/tag/python.html">python</a></span>
+</footer><!-- /.post-info -->      <div class="section" id="lists">
+<h2>Lists</h2>
+<p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#lists">List</a> is basic and frequently-used data structure in Python. Lists are mutable
+sequences, typically used to store collections of homogeneous items. You may
+make stupied mistakes and get stuck with the mutability of the lists.</p>
+<div class="section" id="initialization-on-nested-list">
+<h3>Initialization on nested list</h3>
+<p>To initialize a nested list, we may have several approaches to complete this.</p>
+<div class="highlight"><pre><span class="c"># method #1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l1</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span> <span class="c"># list multiply</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l1</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+
+<span class="c"># method #2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="c"># list comprehensions</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l2</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+</pre></div>
+<p>Let's see what's the difference between the two approaches.</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">l1</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;abc&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l1</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#39;abc&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#39;abc&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#39;abc&#39;</span><span class="p">]]</span>   <span class="c"># OMG, each element is changed</span>
+<span class="c">#                              ^       # we just want to change the position</span>
+                                       <span class="c"># signed with &quot;^&quot;.</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l2</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;xyz&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l2</span>
+<span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s">&#39;xyz&#39;</span><span class="p">]]</span>           <span class="c"># this is the situation that we want.</span>
+</pre></div>
+<p>How does this happen? Why does the two approaches have different results when
+we chang the element? Here for l1, the shallow copys only happened, nested list
+structures are not copied. So in the 1st level of this nested list, the element
+of the list refers to the same list object. The changes to any element will be
+reflected in each element. So if you don't need synced nested lists, please build
+lists with deep copies instead of shallow copies. You can refer to
+<a class="reference external" href="https://docs.python.org/3/library/copy.html?highlight=shallow%20copy#module-copy">Shallow and deep copy operations</a> for diving into details.</p>
+</div>
+<div class="section" id="modify-list-you-are-iterating-over">
+<h3>Modify list you are iterating over</h3>
+<p>If you need to modify the list you are iterating over while inside the loop, it
+is highly recommended that you first make a copy. Iterating over the list doesn't
+implicitly make a copy. But this slice notation make this specially convenient.</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">languages</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;java&#39;</span><span class="p">,</span> <span class="s">&#39;python&#39;</span><span class="p">,</span> <span class="s">&#39;bash&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">lang</span> <span class="ow">in</span> <span class="n">languages</span><span class="p">[:]:</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+<span class="o">...</span>         <span class="n">languages</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lang</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">languages</span>
+<span class="p">[</span><span class="s">&#39;python&#39;</span><span class="p">,</span> <span class="s">&#39;java&#39;</span><span class="p">,</span> <span class="s">&#39;python&#39;</span><span class="p">,</span> <span class="s">&#39;bash&#39;</span><span class="p">]</span>
+
+<span class="c"># what if we use languages directly?</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">languages</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;java&#39;</span><span class="p">,</span> <span class="s">&#39;python&#39;</span><span class="p">,</span> <span class="s">&#39;bash&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">lang</span> <span class="ow">in</span> <span class="n">languages</span><span class="p">:</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">lang</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+<span class="o">...</span>         <span class="n">languages</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">lang</span><span class="p">)</span>
+<span class="o">...</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">languages</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">:</span> <span class="c"># avoid infinite loops</span>
+<span class="o">...</span>         <span class="k">break</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">languages</span>
+<span class="p">[</span><span class="s">&#39;python&#39;</span><span class="p">,</span> <span class="s">&#39;python&#39;</span><span class="p">,</span> <span class="s">&#39;python&#39;</span><span class="p">,</span> <span class="s">&#39;python&#39;</span><span class="p">,</span> <span class="s">&#39;python&#39;</span><span class="p">,</span> <span class="s">&#39;python&#39;</span><span class="p">,</span> <span class="s">&#39;python&#39;</span><span class="p">,</span> <span class="s">&#39;java&#39;</span><span class="p">,</span> <span class="s">&#39;python&#39;</span><span class="p">,</span> <span class="s">&#39;bash&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span>
+</pre></div>
+<p>So you should avoid operating on the modified list by making a copy of list.</p>
+<p>[To be continued]</p>
+</div>
+</div>
+
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://www.jobbole.com/">Jobbole</a></li>
+                            <li><a href="http://oj.leetcode.com">OJ Leetcode</a></li>
+                            <li><a href="http://www.importnew.com">Import New</a></li>
+                            <li><a href="http://www.36kr.com/">36Kr</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://harrisonfeng.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="http://cn.linkedin.com/in/harrisonfeng">Linkedin</a></li>
+                            <li><a href="http://github.com/harrisonfeng">Github</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
