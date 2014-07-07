@@ -27,15 +27,75 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="http://harrisonfeng.github.io/python-inside.html">Python Inside</a></h1>
+                    <h1 class="entry-title"><a href="http://harrisonfeng.github.io/python-lists.html">Lists in Python</a></h1>
 <footer class="post-info">
         <span>Fri 06 June 2014</span>
 <span>| tags: <a href="http://harrisonfeng.github.io/tag/python.html">python</a></span>
-</footer><!-- /.post-info --><div class="section" id="lists">
-<h2>Lists</h2>
-<p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#lists">List</a> is basic and frequently-used data structure in Python. Lists are mutable
+</footer><!-- /.post-info --><div class="section" id="overview">
+<h2>Overview</h2>
+<p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#lists">List</a> is basic and frequently-used data structure in Python. Lists are <a class="reference external" href="https://docs.python.org/3/glossary.html#term-mutable">mutable</a>
 sequences, typically used to store collections of homogeneous items. You may
-make stupied mistakes and get stuck with the mutability of the lists.</p>
+make stupied mistakes and get stuck with the mutability of the lists. Here will
+introduce some advanced technologies in python lists.</p>
+<div class="section" id="list-comprehensions">
+<h3>List comprehensions</h3>
+<p>List comprehension is a compact way to process all or part of the elements in a
+sequence and return a list with the results. Here illustrates a standard list
+comprehension construct.</p>
+<pre class="literal-block">
+           (4)   (5)
+            |     |
+[ x * 2 for x in nums if x &gt; 0 ]
+ |&lt;---&gt;|&lt;-----------&gt;|&lt;------&gt;|
+   (1)      (2)         (3)
+
+   (1) output expressions
+   (2) loop clause
+   (3) conditional clause (optional)
+   (4) variable
+   (5) input sequence
+</pre>
+<p>Let's see some examples:</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">81</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">4</span> <span class="p">]</span>
+<span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">81</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">]</span>
+<span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+</pre></div>
+<p>If the output expression is tuple, it must be parenthesized.</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+   <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span>
+      <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+                 <span class="o">^</span>
+<span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">syntax</span>
+</pre></div>
+<p>Flatten a list using a list comprehension with two 'for's</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">vec</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="n">nu</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">vec</span> <span class="k">for</span> <span class="n">nu</span> <span class="ow">in</span> <span class="n">e</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</pre></div>
+<p>For output expression, it can be any arbitrary expression, including another
+list comprehension.</p>
+<p>Here is a nested list, actually, it may be thought of as a <cite>3x4</cite> matrix.</p>
+<div class="highlight"><pre><span class="n">mtrx</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">4</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+       <span class="p">]</span>
+</pre></div>
+<p>Let's make <cite>mtrx</cite> transposed using list comprehensions.</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="p">[[</span><span class="n">r</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">mtrx</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+<span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]</span>
+</pre></div>
+<p>Of course, <a class="reference external" href="https://docs.python.org/3/library/functions.html#zip">zip()</a> may be the best solution for this case.</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">mtrx</span><span class="p">))</span>
+<span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">)]</span>
+</pre></div>
+</div>
 <div class="section" id="initialization-on-nested-list">
 <h3>Initialization on nested list</h3>
 <p>To initialize a nested list, we may have several approaches to complete this.</p>
@@ -45,7 +105,7 @@ make stupied mistakes and get stuck with the mutability of the lists.</p>
 <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
 
 <span class="c"># method #2</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">l2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="c"># list comprehensions</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">l2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="c"># list comprehension</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">l2</span>
 <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
 </pre></div>
@@ -94,7 +154,71 @@ implicitly make a copy. But this slice notation make this specially convenient.<
 <span class="o">&gt;&gt;&gt;</span>
 </pre></div>
 <p>So you should avoid operating on the modified list by making a copy of list.</p>
-<p>[To be continued]</p>
+</div>
+<div class="section" id="count-hashable-items">
+<h3>Count hashable items</h3>
+<p>Sometimes, maybe we want to count hashable items in a list. For example:</p>
+<pre class="literal-block">
+words = ['bar', 'baz', 'foo', 'bar', 'bar', 'foo']
+
+output:
+
+[('bar', 3), ('baz', 1), ('foo', 2)]
+</pre>
+<p>We can just use collections.Counter</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">words_cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">words_cnt</span>
+<span class="n">Counter</span><span class="p">({</span><span class="s">&#39;bar&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&#39;foo&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;baz&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">words_cnt</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">))</span>
+<span class="p">[(</span><span class="s">&#39;bar&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s">&#39;baz&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
+</pre></div>
+<p>Here a <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.Counter">Counter</a> object is acutally a dictionary which stores elements as
+dictionary keys and stores their counts as dictionary values. A <a class="reference external" href="https://docs.python.org/3/library/collections.html#collections.Counter">Counter</a>
+is a <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict">dict</a> subclass for counting hashable objects.</p>
+</div>
+<div class="section" id="remove-duplicated-items">
+<h3>Remove duplicated items</h3>
+<p>If we want to remove the duplicates elements in a list, what should
+we do? You may think of the simplies way is to use set() if the
+elements are hashable.</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="s">&#39;bar&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;bar&#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="s">&#39;xyz&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="p">[</span><span class="s">&#39;bar&#39;</span><span class="p">,</span> <span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="s">&#39;foo&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;xyz&#39;</span><span class="p">]</span>
+</pre></div>
+<p>But did you see it? The list output did not maintain the original order.
+That's the problem. We should avoid using this solution unless you absolutely
+don't care its original order.</p>
+<p>Here is the another solution to preserve the order.</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">rm_dups</span><span class="p">(</span><span class="n">lst</span><span class="p">):</span>
+    <span class="n">non_dups</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">e</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">non_dups</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">e</span>
+            <span class="n">non_dups</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+<p>In this code example, we assume elements in list are hashable. If the elements
+are unhashable (such dicts), we may make a slight change to this method.</p>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">rm_dups</span><span class="p">(</span><span class="n">lst</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">non_dups</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">lst</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">e</span>        <span class="c"># hashable</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">key</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>   <span class="c"># unhashable</span>
+        <span class="k">if</span> <span class="n">val</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">non_dups</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">e</span>
+            <span class="n">non_dups</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">d</span> <span class="o">=</span> <span class="p">[{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;d&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="n">rm_dups</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">item</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">values</span><span class="p">())))</span> <span class="c"># python 3</span>
+<span class="p">[{</span><span class="s">&#39;a&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;b&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span> <span class="p">{</span><span class="s">&#39;c&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}]</span>
+</pre></div>
+<p>Actually, the argument key should be a function in order to get values to be
+compared.</p>
+</div>
+<div class="section" id="sort-a-list">
+<h3>Sort a list</h3>
 </div>
 </div>
                 </article>
